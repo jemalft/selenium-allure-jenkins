@@ -1,16 +1,16 @@
 pipline {
     agent any
     stages {
-            stage('Build') {
-                steps {
-                    sh './mvn clean test'
-                }
+        stage('Build') {
+            steps {
+                sh './mvn clean test'
             }
-      }
+        }
+    }
 
     stage('reports') {
         steps {
-        script {
+            script {
                 allure([
                         includeProperties: false,
                         jdk: '',
@@ -18,7 +18,7 @@ pipline {
                         reportBuildPolicy: 'ALWAYS',
                         results: [[path: 'target/allure-results']]
                 ])
-        }
+            }
         }
     }
 }
