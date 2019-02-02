@@ -3,6 +3,8 @@
 .idea
 target
 .allure
+.DS_Store
+
 *.iml
 # Log file
 *.log
