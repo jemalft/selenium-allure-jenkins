@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="utils.Listeners.TestListener"/>
+        <listener class-name="utils.Listeners.AnnotationTransformer"/>
+    </listeners>
+
+    <test verbose="2" preserve-order="true" name="/Users/jemal/Documents/Projects/selenium-allure-jenkins/selenium_allure_jenkins">
+        <classes>
+            <class name="tests.LoginTests">
+            <methods>
+                <include name="invalidLoginTest_InvalidUserNameInvalidPassword"/>
+                <include name="invalidLoginTest_EmptyUserEmptyPassword"/>
+            </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
