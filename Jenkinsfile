@@ -1,23 +1,14 @@
-pipline {
-    agent any
+pipeline {
+    agent { label 'java' }
+    parameters {
+        booleanParam(name: 'RELEASE', defaultValue: false, description: 'Perform release?')
+        string(name: 'RELEASE_VERSION', defaultValue: '', description: 'Release version')
+        string(name: 'NEXT_VERSION', defaultValue: '', description: 'Next version (without SNAPSHOT)')
+    }
     stages {
         stage('Build') {
             steps {
-                sh './mvn clean test'
-            }
-        }
-    }
-
-    stage('reports') {
-        steps {
-            script {
-                allure([
-                        includeProperties: false,
-                        jdk: '',
-                        properties: [],
-                        reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'target/allure-results']]
-                ])
+                sh './mvn -Dmaven.test.failure.ignore=true clean verify'
             }
         }
     }
