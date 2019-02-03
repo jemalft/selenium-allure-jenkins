@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install -DskipTests'
+                sh '-Dmaven.test.failure.ignore=true clean verify'
         stage('reports') {
             steps {
             script {
