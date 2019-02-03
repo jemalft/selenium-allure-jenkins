@@ -4,6 +4,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh '-Dmaven.test.failure.ignore=true clean verify'
+            }
+        }
+    }
         stage('reports') {
             steps {
             script {
@@ -14,9 +17,6 @@ pipeline {
                     reportBuildPolicy: 'ALWAYS',
                     results: [[path: 'target/allure-results']]
                    ])
-             }
-            }
-        }
             }
         }
     }
