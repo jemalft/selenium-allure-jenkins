@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '-Dmaven.test.failure.ignore=true clean verify'
-                       
+                sh 'mvn clean test'          
             }
         }
         stage('reports') {
