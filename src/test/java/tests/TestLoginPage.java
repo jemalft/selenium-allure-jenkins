@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 @Listeners({ TestListener.class })
 @Epic("Regression Tests")
 @Feature("Login Tests")
-public class LoginTests extends BaseTest {
+public class TestLoginPage extends TestBaseClass {
 
     //Test Data
     String wrongUsername = "onur@swtestacademy.com";

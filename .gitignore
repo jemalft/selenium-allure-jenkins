@@ -4,6 +4,7 @@
 target
 .allure
 .DS_Store
+allure-results
 
 *.iml
 # Log file

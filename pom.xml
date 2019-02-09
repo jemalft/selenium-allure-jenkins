@@ -10,8 +10,12 @@
 
 
     <properties>
-        <aspectj.version>1.8.13</aspectj.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <skipTests>false</skipTests>
+        <seleniumJava>3.12.0</seleniumJava>
+        <testNG>6.14.3</testNG>
+        <allure>2.0-BETA19</allure>
+        <log4j>1.2.17</log4j>
     </properties>
 
     <dependencies>
@@ -19,7 +23,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.12.0</version>
+            <version>${seleniumJava}</version>
         </dependency>
 
         <dependency>
@@ -31,7 +35,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.14.3</version>
+            <version>${testNG}</version>
         </dependency>
 
         <dependency>
@@ -43,13 +47,13 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>2.0-BETA19</version>
+            <version>${allure}</version>
         </dependency>
 
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
@@ -93,8 +97,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
+                    <skipTests>${skipTests}</skipTests>
                 </configuration>
             </plugin>
+
+
         </plugins>
     </build>
 

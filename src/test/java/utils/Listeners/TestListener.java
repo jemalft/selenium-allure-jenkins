@@ -8,11 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import tests.BaseTest;
+import tests.TestBaseClass;
 import utils.ExtentReports.ExtentManager;
 import utils.ExtentReports.ExtentTestManager;
 
-public class TestListener extends BaseTest implements ITestListener {
+public class TestListener extends TestBaseClass implements ITestListener {
 
     private static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
@@ -68,9 +68,9 @@ public class TestListener extends BaseTest implements ITestListener {
     public void onTestFailure(ITestResult iTestResult) {
         System.out.println("I am in onTestFailure method " +  getTestMethodName(iTestResult) + " failed");
 
-        //Get driver from BaseTest and assign to local webdriver variable.
+        //Get driver from TestBaseClass and assign to local webdriver variable.
         Object testClass = iTestResult.getInstance();
-        WebDriver driver = ((BaseTest) testClass).getDriver();
+        WebDriver driver = ((TestBaseClass) testClass).getDriver();
 
         //Allure ScreenShotRobot and SaveTestLog
         if (driver instanceof WebDriver) {

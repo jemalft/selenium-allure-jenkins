@@ -7,7 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import utilities.Log;
 
-public class BaseTest {
+public class TestBaseClass {
     public WebDriver driver;
     public WebDriverWait wait;
 

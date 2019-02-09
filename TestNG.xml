@@ -8,12 +8,8 @@
 
     <test verbose="2" preserve-order="true" name="/Users/jemal/Documents/Projects/selenium-allure-jenkins/selenium_allure_jenkins">
         <classes>
-            <class name="tests.LoginTests">
-            <methods>
-                <include name="invalidLoginTest_InvalidUserNameInvalidPassword"/>
-                <include name="invalidLoginTest_EmptyUserEmptyPassword"/>
-            </methods>
-            </class>
+            <class name="tests.TestLoginPage"/>
+            <class name="tests.TestBaseClass"/>
         </classes>
     </test>
 </suite>
