@@ -11,11 +11,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <skipTests>false</skipTests>
         <seleniumJava>3.12.0</seleniumJava>
         <testNG>6.14.3</testNG>
         <allure>2.0-BETA19</allure>
         <log4j>1.2.17</log4j>
+        <aspectj.version>1.9.2</aspectj.version>
     </properties>
 
     <dependencies>
@@ -82,7 +82,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
                 <configuration>
+                    <testIncludes>
+                        <testInclude>**/testng/**</testInclude>
+                    </testIncludes>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
@@ -99,8 +103,17 @@
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
                     <testFailureIgnore>true</testFailureIgnore>
-                    <skipTests>${skipTests}</skipTests>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                    </argLine>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
 
