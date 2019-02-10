@@ -1,6 +1,13 @@
 FROM jenkins/jenkins:lts
 # if we want to install via apt
 USER root
+
+RUN apt-get update && apt-get install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
+
+RUN apt-get update && apt-get install -y git \
+    && apt-get install -y xvfb
+
+
 # install maven
 RUN apt-get update && apt-get install -y maven
 
@@ -22,25 +29,32 @@ RUN echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' |
 RUN apt-get update
 RUN apt-get install -y google-chrome-stable
 
-# install Xvfb
-RUN apt-get install -y xvfb
-RUN Xvfb :0 -ac -screen 0 1024x768x24 &
-
-#RUN apt-get install -y google-chrome-stable
-
-# Install ChromeDriver
-RUN wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/
-RUN unzip ~/chromedriver_linux64.zip -d ~/
-RUN rm ~/chromedriver_linux64.zip
-RUN mv -f ~/chromedriver /usr/local/bin/chromedriver
-RUN chown root:root /usr/local/bin/chromedriver
-RUN chmod 0755 /usr/local/bin/chromedriver
+# chromeDriver v2.35
+RUN wget -q "https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip" -O /tmp/chromedriver.zip \
+    && unzip /tmp/chromedriver.zip -d /usr/bin/ \
+    && rm /tmp/chromedriver.zip
 
 # Install Selenium
 RUN wget -N http://selenium-release.storage.googleapis.com/$SELENIUM_SUBDIR/selenium-server-standalone-$SELENIUM_STANDALONE_VERSION.jar -P ~/
 RUN mv -f ~/selenium-server-standalone-$SELENIUM_STANDALONE_VERSION.jar /usr/local/bin/selenium-server-standalone.jar
 RUN chown root:root /usr/local/bin/selenium-server-standalone.jar
 RUN chmod 0755 /usr/local/bin/selenium-server-standalone.jar
+
+
+# GeckoDriver v0.19.1
+RUN wget -q "https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz" -O /tmp/geckodriver.tgz \
+    && tar zxf /tmp/geckodriver.tgz -C /usr/bin/ \
+    && rm /tmp/geckodriver.tgz
+
+# xvfb - X server display
+ADD /xvfb-chromium.sh /usr/bin/xvfb-chromium.sh
+RUN ln -sf /usr/bin/xvfb-chromium /usr/bin/google-chrome \
+    && chmod 777 /usr/bin/xvfb-chromium.sh
+
+# create symlinks to chromedriver and geckodriver (to the PATH)
+RUN ln -sf /usr/bin/geckodriver /usr/bin/chromium-browser \
+    && chmod 777 /usr/bin/geckodriver \
+    && chmod 777 /usr/bin/chromium-browser
 
 # RUN apt-get update && apt-get install -y ruby make more-thing-here
 # drop back to the regular jenkins user - good practice
