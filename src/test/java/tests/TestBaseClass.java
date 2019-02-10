@@ -22,7 +22,7 @@ public class TestBaseClass {
         Log.startLog("Test is starting!");
 
         //Create a Chrome driver. All test classes use this.
-       //System.setProperty("webdriver.chrome.driver","/src/resources/drivers/chromedriver");
+       System.setProperty("webdriver.chrome.driver","/src/resources/drivers/chromedriver");
        ChromeOptions chromeOptions = new ChromeOptions();
        chromeOptions.addArguments("--headless");
        //("--no-sandbox");
