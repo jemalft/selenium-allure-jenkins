@@ -22,6 +22,9 @@ RUN echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' |
 RUN apt-get update
 RUN apt-get install -y google-chrome-stable
 
+# install Xvfb
+RUN apt-get install -y xvfb
+RUN Xvfb :0 -ac -screen 0 1024x768x24 &
 
 #RUN apt-get install -y google-chrome-stable
 
