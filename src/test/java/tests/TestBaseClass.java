@@ -11,9 +11,9 @@ public class TestBaseClass {
     public WebDriver driver;
     public WebDriverWait wait;
 
-    public WebDriver getDriver() {
-        return driver;
-    }
+   // public WebDriver getDriver() {
+   //     return driver;
+  //  }
 
     @BeforeClass(description = "Class Level Setup!")
     public void setup () {
