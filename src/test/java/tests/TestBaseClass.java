@@ -23,10 +23,10 @@ public class TestBaseClass {
 
         //Create a Chrome driver. All test classes use this.
        // System.setProperty("webdriver.chrome.driver","driver/chromedriver");
-       // ChromeOptions chromeOptions = new ChromeOptions();
-       // chromeOptions.addArguments("--headless");
-        //driver = new ChromeDriver(chromeOptions);
-        driver = new ChromeDriver();
+       ChromeOptions chromeOptions = new ChromeOptions();
+       chromeOptions.addArguments("--headless");
+       driver = new ChromeDriver(chromeOptions);
+        //driver = new ChromeDriver();
 
         //Create a wait. All test classes use this.
         wait = new WebDriverWait(driver,15);
