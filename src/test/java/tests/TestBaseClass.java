@@ -2,6 +2,7 @@ package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -11,9 +12,9 @@ public class TestBaseClass {
     public WebDriver driver;
     public WebDriverWait wait;
 
-   // public WebDriver getDriver() {
-   //     return driver;
-  //  }
+    public WebDriver getDriver() {
+        return driver;
+     }
 
     @BeforeClass(description = "Class Level Setup!")
     public void setup () {
@@ -22,8 +23,10 @@ public class TestBaseClass {
 
         //Create a Chrome driver. All test classes use this.
         System.setProperty("webdriver.chrome.driver","driver/chromedriver");
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
 
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(chromeOptions);
 
         //Create a wait. All test classes use this.
         wait = new WebDriverWait(driver,15);
