@@ -3,31 +3,26 @@ package tests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import utilities.Log;
 
+import static utils.BrowsersManager.browser.initializeBrowser;
+
 public class TestBaseClass {
     public WebDriver driver;
     public WebDriverWait wait;
-
-    public WebDriver getDriver() {
-        return driver;
-     }
 
     @BeforeClass(description = "Class Level Setup!")
     public void setup () {
         //Write a Log when tests is starting
         Log.startLog("Test is starting!");
 
-        //Create a Chrome driver. All test classes use this.
-       System.setProperty("webdriver.chrome.driver","src/test/resources/drivers/chromedriver");
-       ChromeOptions chromeOptions = new ChromeOptions();
-       chromeOptions.addArguments("--headless");
-       //("--no-sandbox");
-       driver = new ChromeDriver(chromeOptions);
-        //driver = new ChromeDriver();
+        driver = initializeBrowser("chrome");
+
+       // driver = new ChromeDriver();
 
         //Create a wait. All test classes use this.
         wait = new WebDriverWait(driver,15);

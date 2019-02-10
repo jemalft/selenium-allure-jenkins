@@ -12,6 +12,8 @@ import tests.TestBaseClass;
 import utils.ExtentReports.ExtentManager;
 import utils.ExtentReports.ExtentTestManager;
 
+import static utils.BrowsersManager.browser.initializeBrowser;
+
 public class TestListener extends TestBaseClass implements ITestListener {
 
     private static String getTestMethodName(ITestResult iTestResult) {
@@ -70,8 +72,8 @@ public class TestListener extends TestBaseClass implements ITestListener {
 
         //Get driver from TestBaseClass and assign to local webdriver variable.
         Object testClass = iTestResult.getInstance();
-        WebDriver driver = ((TestBaseClass) testClass).getDriver();
-
+       // WebDriver driver = ((TestBaseClass) testClass).getDriver();
+        WebDriver driver = initializeBrowser("chrome");
         //Allure ScreenShotRobot and SaveTestLog
         if (driver instanceof WebDriver) {
             System.out.println("Screenshot captured for test case:" + getTestMethodName(iTestResult));
