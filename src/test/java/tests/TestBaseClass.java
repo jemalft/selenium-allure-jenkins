@@ -20,7 +20,7 @@ public class TestBaseClass {
         //Write a Log when tests is starting
         Log.startLog("Test is starting!");
 
-        driver = initializeBrowser("chrome");
+        driver = initializeBrowser("firefox");
 
        // driver = new ChromeDriver();
 
