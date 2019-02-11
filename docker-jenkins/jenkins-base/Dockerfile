@@ -19,7 +19,7 @@ RUN apt-get update -y
 RUN apt-get install -y unzip openjdk-8-jre-headless xvfb libxi6 libgconf-2-4
 
 # Set Google Chrome, ChromeDriver and Selenium Versions
-ENV CHROME_DRIVER_VERSION 2.35
+ENV CHROME_DRIVER_VERSION 3.4.0
 ENV SELENIUM_STANDALONE_VERSION 3.4.0
 ENV SELENIUM_SUBDIR 3.4
 
