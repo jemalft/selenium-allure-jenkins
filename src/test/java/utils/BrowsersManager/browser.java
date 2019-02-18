@@ -13,8 +13,7 @@ public class browser {
         switch (type) {
             case "chrome":
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--start-maximized");
-                chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--headless", "window-size=1024,768", "--no-sandbox");
                 driver = new ChromeDriver(chromeOptions);
                 break;
 
