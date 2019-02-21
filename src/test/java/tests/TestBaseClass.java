@@ -1,13 +1,12 @@
 package tests;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import utilities.Log;
+
 
 import static utils.BrowsersManager.browser.initializeBrowser;
 
@@ -16,7 +15,7 @@ public class TestBaseClass {
     public WebDriverWait wait;
 
     @BeforeClass(description = "Class Level Setup!")
-    public void setup () {
+    public void setup ()  {
         //Write a Log when tests is starting
         Log.startLog("Test is starting!");
 

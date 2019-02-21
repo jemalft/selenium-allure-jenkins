@@ -12,6 +12,8 @@ import tests.TestBaseClass;
 import utils.ExtentReports.ExtentManager;
 import utils.ExtentReports.ExtentTestManager;
 
+import java.net.MalformedURLException;
+
 import static utils.BrowsersManager.browser.initializeBrowser;
 
 public class TestListener extends TestBaseClass implements ITestListener {
@@ -73,7 +75,12 @@ public class TestListener extends TestBaseClass implements ITestListener {
         //Get driver from TestBaseClass and assign to local webdriver variable.
         Object testClass = iTestResult.getInstance();
        // WebDriver driver = ((TestBaseClass) testClass).getDriver();
-        WebDriver driver = initializeBrowser("chrome");
+        WebDriver driver = null;
+        try {
+            driver = initializeBrowser("chrome");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         //Allure ScreenShotRobot and SaveTestLog
         if (driver instanceof WebDriver) {
             System.out.println("Screenshot captured for test case:" + getTestMethodName(iTestResult));
