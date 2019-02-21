@@ -75,7 +75,7 @@ public class TestLoginPage extends TestBaseClass {
         //*************ASSERTIONS***********************
         Thread.sleep(500);
         loginPage.verifyLoginUserName("Lütfen e-posta adresinizi girin.");
-        loginPage.verifyLoginPassword("WRONG MESSAGE FOR FAILURE!");
+        loginPage.verifyLoginPassword("Bu alanın doldurulması zorunludur.");
     }
 
 }
