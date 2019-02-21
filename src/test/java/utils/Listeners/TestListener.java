@@ -76,11 +76,8 @@ public class TestListener extends TestBaseClass implements ITestListener {
         Object testClass = iTestResult.getInstance();
        // WebDriver driver = ((TestBaseClass) testClass).getDriver();
         WebDriver driver = null;
-        try {
             driver = initializeBrowser("chrome");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+
         //Allure ScreenShotRobot and SaveTestLog
         if (driver instanceof WebDriver) {
             System.out.println("Screenshot captured for test case:" + getTestMethodName(iTestResult));

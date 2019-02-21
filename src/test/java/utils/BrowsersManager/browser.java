@@ -14,7 +14,7 @@ public class browser {
 
         switch (type) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver_3");
+                System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--headless");
                 chromeOptions.addArguments("--no-sandbox");
